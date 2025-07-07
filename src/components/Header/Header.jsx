@@ -1,10 +1,12 @@
 import styles from './Header.module.css'
 
-export default function Header() {
+export default function Header({
+    showMenu,
+}) {
     return (
          <header>
     <section className={styles["sidebar-left"]}>
-        <div className={styles["ham"]}>
+        <div className={styles["ham"]} onClick={() => showMenu(prev => !prev)}>
         <span />
         <span />
         <span />

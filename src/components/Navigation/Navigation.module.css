@@ -10,8 +10,15 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.active {
-    transform: translateX(0);
+.slide-in {
+  transform: translateX(0);
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    
 }
 
 a {

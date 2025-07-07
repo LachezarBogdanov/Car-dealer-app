@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import Create from './components/Create/Create'
 import Details from './components/Details/Details'
@@ -8,15 +9,19 @@ import Navigation from './components/Navigation/Navigation'
 import Register from './components/Register/Register'
 
 function App() {
+  const [isMenuShown, setIsMenuShown] = useState(false);
 
   return (
     <>
     <div className="main">
-     <Header />
+     <Header showMenu={setIsMenuShown} />
     </div>
-    <div className="aside-menu">
-     <Navigation />
-    </div>
+
+    {isMenuShown ? 
+      <div className="aside-menu">
+      <Navigation showMenu={setIsMenuShown} />
+      </div>
+     : ''}
 
     <div className="content">
       <Login />
