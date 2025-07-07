@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router';
 import styles from './Header.module.css'
 
 export default function Header({
@@ -12,7 +13,10 @@ export default function Header({
         <span />
         </div>
         <div className={styles["logo"]}>
-        <h1>CARS.bg</h1>
+        <h1>
+            <NavLink to={'/'} className={styles['heading']}>
+            CARS.bg
+            </NavLink></h1>
         </div>
     </section>
     <section className={styles["sidebar-right"]}>

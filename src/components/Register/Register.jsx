@@ -9,7 +9,7 @@ export default function Register() {
             <input type="email" placeholder="Имейл" required="" />
             <input type="password" placeholder="Парола" required="" />
             <input type="password" placeholder="Потвърди паролата" required="" />
-            <button type="submit">Регистрация</button>
+            <button type="submit" className={styles['register-btn']}>Регистрация</button>
         </form>
         <div className={styles["switch-link"]}>
             Вече имате акаунт? <a href="login.html">Влезте</a>

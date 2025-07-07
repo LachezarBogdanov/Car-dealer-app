@@ -33,7 +33,7 @@ header {
     gap: 2em;
 }
 
-.logo h1 {
+.heading {
   cursor: pointer;
   color: #fff;
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Navigation.module.css'
+import { NavLink } from 'react-router';
 
 export default function Navigation({
     showMenu,
@@ -20,13 +21,15 @@ export default function Navigation({
             <p>Здравейте, ИМЕ</p>
         </section>
         <section className={styles["start"]}>
-            <a href="#" className={styles["heading-start"]}>
+            <NavLink to={'/'} className={styles["heading-start"]} onClick={() => showMenu(false)}>
             Начало
-            </a>
-            <a href="#">+ Публикувай обява</a>
+            </NavLink>
+            <NavLink to={'/create'} onClick={() => showMenu(false)}>+ Публикувай обява</NavLink>
+            <NavLink to={'/myAdd'} onClick={() => showMenu(false)}>Моите обяви</NavLink>
         </section>
         <section className={styles["menu-options"]}>
-            <a href="#">Моите обяви</a>
+            <NavLink to={'/login'} onClick={() => showMenu(false)}>Вход</NavLink>
+            <NavLink to={'/register'} onClick={() => showMenu(false)}>Регистрация</NavLink>
             <a href="#">Изход</a>
         </section>
         </div>

@@ -8,7 +8,7 @@ export default function Login() {
             <form>
             <input type="email" placeholder="Имейл" required="" />
             <input type="password" placeholder="Парола" required="" />
-            <button type="submit">Влез</button>
+            <button type="submit" className={styles['login-btn']}>Влез</button>
             </form>
             <div className={styles["switch-link"]}>
             Нямате акаунт? <a href="register.html">Регистрирайте се</a>
