@@ -61,3 +61,10 @@
     .switch-link a:hover {
       text-decoration: underline;
     }
+
+    .error {
+      color: red;
+      margin-top: 0.3em;
+      margin-left: 0.3em;
+      font-size: 1em;
+    }

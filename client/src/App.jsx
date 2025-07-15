@@ -8,12 +8,14 @@ import Login from './components/Login/Login'
 import Navigation from './components/Navigation/Navigation'
 import Register from './components/Register/Register'
 import { BrowserRouter, Route, Routes } from 'react-router'
+import UserProvider from './providers/UserProvider'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
 
   return (
     <>
+    <UserProvider>
     <BrowserRouter>
       <div className="main">
       <Header showMenu={setIsMenuShown} />
@@ -35,6 +37,7 @@ function App() {
           </Routes>
       </div>
       </BrowserRouter>
+      </UserProvider>
     </>
   )
 }
