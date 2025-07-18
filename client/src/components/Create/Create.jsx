@@ -1,26 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Create.module.css'
 import { Link } from 'react-router';
+import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const [data, setData] = useState({
-    condition: '',
-    model: '',
-    modifications: '',
-    compartment: '',
-    price: 0,
-    gears: '',
-    fuelType: '',
-    power: '',
-    cubature: '',
-    year: '',
-    mileage: '',
-    doorCount: '',
-    color: '',
-    city: '',
-    description: '',
-  });
+  const { condition } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -28,7 +13,6 @@ export default function Create() {
       const newImages = [...images];
       newImages[index] = URL.createObjectURL(file);
       setImages(newImages);
-      console.log(images);
       
     }
   }
@@ -62,7 +46,7 @@ export default function Create() {
     <li>
       <Link to={'/condition'}>
         Състояние*:
-        <span className={styles["static"]}>Изберете</span>
+        <span className={styles["static"]}>{condition || 'Изберете'}</span>
       </Link>
     </li>
     <li>

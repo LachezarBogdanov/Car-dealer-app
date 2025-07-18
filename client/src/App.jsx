@@ -9,12 +9,15 @@ import Navigation from './components/Navigation/Navigation'
 import Register from './components/Register/Register'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import UserProvider from './providers/UserProvider'
+import Condition from './components/Condition/Condition'
+import CreateProvider from './providers/CreateProvider'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
 
   return (
     <>
+    <CreateProvider>
     <UserProvider>
     <BrowserRouter>
       <div className="main">
@@ -34,10 +37,12 @@ function App() {
           <Route path='/details' element={<Details />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/condition' element={<Condition />} />
           </Routes>
       </div>
       </BrowserRouter>
       </UserProvider>
+      </CreateProvider>
     </>
   )
 }
