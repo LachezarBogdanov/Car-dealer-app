@@ -1,42 +1,69 @@
+import { useState } from 'react';
 import styles from './Create.module.css'
+import { Link } from 'react-router';
 
 export default function Create() {
+  const [images, setImages] = useState([null, null, null, null, null]);
+  const [data, setData] = useState({
+    condition: '',
+    model: '',
+    modifications: '',
+    compartment: '',
+    price: 0,
+    gears: '',
+    fuelType: '',
+    power: '',
+    cubature: '',
+    year: '',
+    mileage: '',
+    doorCount: '',
+    color: '',
+    city: '',
+    description: '',
+  });
+
+  const handleImageChange = (index, e) => {
+    const file = e.target.files[0];
+    if(file) {
+      const newImages = [...images];
+      newImages[index] = URL.createObjectURL(file);
+      setImages(newImages);
+      console.log(images);
+      
+    }
+  }
+
     return (
         <>
   <div className={styles["upload-wrapper"]}>
-    <h3>Качете снимки</h3>
-    <div className={styles["info-box"]}>
-      ℹ️ За да качите няколко снимки, изберете от файловата система до 5 броя
-    </div>
-    <div className={styles["image-grid"]}>
-      <label className={styles["image-box"]}>
-        <input type="file" accept="image/*" />
-        <span className={styles["placeholder"]}>1</span>
-      </label>
-      <label className={styles["image-box"]}>
-        <input type="file" accept="image/*" />
-        <span className={styles["placeholder"]}>2</span>
-      </label>
-      <label className={styles["image-box"]}>
-        <input type="file" accept="image/*" />
-        <span className={styles["placeholder"]}>3</span>
-      </label>
-      <label className={styles["image-box"]}>
-        <input type="file" accept="image/*" />
-        <span className={styles["placeholder"]}>4</span>
-      </label>
-      <label className={styles["image-box"]}>
-        <input type="file" accept="image/*" />
-        <span className={styles["placeholder"]}>5</span>
-      </label>
-    </div>
-  </div>
+        <h3>Качете снимки</h3>
+        <div className={styles["info-box"]}>
+          ℹ️ Изберете до 5 снимки
+        </div>
+        <div className={styles["image-grid"]}>
+          {[...Array(5)].map((_, i) => (
+            <label key={i} className={styles["image-box"]}>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageChange(i, e)}
+                hidden
+              />
+              {images[i] ? (
+                <img src={images[i]} alt={`upload-${i}`} className={styles["preview-image"]} />
+              ) : (
+                <span className={styles["placeholder"]}>{i + 1}</span>
+              )}
+            </label>
+          ))}
+        </div>
+      </div>
   <ul className={styles["options"]}>
     <li>
-      <a href="#">
+      <Link to={'/condition'}>
         Състояние*:
         <span className={styles["static"]}>Изберете</span>
-      </a>
+      </Link>
     </li>
     <li>
       <a href="#">
@@ -147,7 +174,7 @@ export default function Create() {
         name="description"
         id="description"
         className={styles["descriptionText"]}
-        defaultValue={"Описание"}
+        placeholder='Описание'
       />
     </li>
     <button className={styles["publish-btn"]}>Публикувай</button>

@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './Navigation.module.css'
 import { NavLink } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function Navigation({
     showMenu,
 }) {
     const [slideIn, setSlideIn] = useState(false);
     const { email, isAuthenticated } = useAuth();
+    const { userLogoutHandler } = useContext(UserContext);
 
     useEffect(() => {
         const timeout = setTimeout(() => setSlideIn(true), 10);
@@ -33,7 +35,7 @@ export default function Navigation({
         </section>
         <section className={styles["menu-options"]}>
             {isAuthenticated ? (
-                <a href="#">Изход</a>
+                <a href="#" onClick={() => userLogoutHandler()}>Изход</a>
             ) : (
                 <>
                 <NavLink to={'/login'} onClick={() => showMenu(false)}>Вход</NavLink>

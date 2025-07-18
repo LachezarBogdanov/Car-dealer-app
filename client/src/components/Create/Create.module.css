@@ -71,6 +71,12 @@ h3 {
     border-top: 1px solid lightgray;
     padding: 1.2em 0;
     position: relative;
+    cursor: pointer;
+}
+
+.options li:hover a {
+    color: rgb(138, 138, 138);
+
 }
 
 .options li a {
@@ -78,9 +84,6 @@ h3 {
     color: #000;
 }
 
-.options li a:hover {
-    color: rgb(138, 138, 138);
-}
 
 .options li a::after {
     content: '>';
