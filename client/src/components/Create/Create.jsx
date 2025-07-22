@@ -5,7 +5,7 @@ import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const { setData, condition, model, modifications } = useContext(CreateContext);
+  const { setData, condition, model, modifications, compartment, price } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -21,6 +21,12 @@ export default function Create() {
     const value = e.target.value;
     
     setData(prev => ({...prev, modifications: value}));
+  }
+
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({ ...prev, price: value }));
   }
 
     return (
@@ -78,14 +84,21 @@ export default function Create() {
     <li>
       <Link to={'/compartment'}>
         Купе*:
-        <span className={styles["static"]}>Изберете</span>
+        <span className={styles["static"]}>{compartment || 'Изберете'}</span>
       </Link>
     </li>
     <li>
-      <a href="#">
+      <div>
         Цена*:
-        <input type="number" name="price" min={0} className={styles["input-modify"]} />
-      </a>
+        <input
+          type="number"
+          name="price"
+          min={0}
+          className={styles["input-modify"]}
+          onChange={(e) => handlePriceChange(e)}
+          defaultValue={price || ''}
+        />
+      </div>
     </li>
     <li>
       <a href="#">

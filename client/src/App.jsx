@@ -13,6 +13,7 @@ import Condition from './components/Condition/Condition'
 import CreateProvider from './providers/CreateProvider'
 import ModelChoose from './components/ModelChoose/ModelChoose'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import Compartment from './components/Compartment/Compartment'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -42,6 +43,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/condition' element={<Condition />} />
           <Route path='/model' element={<ModelChoose />} />
+          <Route path='/compartment' element={<Compartment />} />
           </Routes>
       </div>
       </BrowserRouter>

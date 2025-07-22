@@ -1,0 +1,30 @@
+.compartmentUl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.compartmentUl .compartmentLi {
+    list-style-type: none;
+    padding: 0.5em;
+    border-bottom: 1px solid gray;
+    width: 60%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.compartmentInput {
+    cursor: pointer;
+    display: none;
+}
+
+.compartmentInput:checked ~ label::after {
+    content: '✔️';
+    position: absolute;
+    right: 0;
+}
+
+.compartmentInput ~ label {
+    cursor: pointer;
+    width: 100%;
+}
