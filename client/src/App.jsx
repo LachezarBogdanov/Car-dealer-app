@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import UserProvider from './providers/UserProvider'
 import Condition from './components/Condition/Condition'
 import CreateProvider from './providers/CreateProvider'
+import ModelChoose from './components/ModelChoose/ModelChoose'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -38,6 +39,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/condition' element={<Condition />} />
+          <Route path='/model' element={<ModelChoose />} />
           </Routes>
       </div>
       </BrowserRouter>

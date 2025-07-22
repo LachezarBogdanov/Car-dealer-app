@@ -5,7 +5,7 @@ import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const { condition } = useContext(CreateContext);
+  const { setData, condition, model, modifications } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -15,6 +15,12 @@ export default function Create() {
       setImages(newImages);
       
     }
+  }
+
+  const handleModificationChange = (e) => {
+    const value = e.target.value;
+    
+    setData(prev => ({...prev, modifications: value}));
   }
 
     return (
@@ -50,10 +56,10 @@ export default function Create() {
       </Link>
     </li>
     <li>
-      <a href="#">
+      <Link to={'/model'}>
         Марка, Модел*:
-        <span className={styles["static"]}>Изберете</span>
-      </a>
+        <span className={styles["static"]}>{model || 'Изберете'}</span>
+      </Link>
     </li>
     <li>
       <div>
@@ -64,14 +70,16 @@ export default function Create() {
           className={styles["input-modify"]}
           maxLength={15}
           placeholder="Пример: 2.2, CDI"
+          onChange={(e) => handleModificationChange(e)}
+          defaultValue={modifications || ''}
         />
       </div>
     </li>
     <li>
-      <a href="#">
+      <Link to={'/compartment'}>
         Купе*:
         <span className={styles["static"]}>Изберете</span>
-      </a>
+      </Link>
     </li>
     <li>
       <a href="#">

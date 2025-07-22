@@ -1,0 +1,38 @@
+.modelUl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modelUl .modelLi {
+    list-style-type: none;
+    padding: 0.5em;
+    border-bottom: 1px solid gray;
+    width: 70%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.inputModel {
+    cursor: pointer;
+    display: none;
+}
+
+.inputModel:checked ~ label::after {
+    content: '✔️';
+    position: absolute;
+    right: 0;
+}
+
+.inputModel ~ label {
+    cursor: pointer;
+    width: 100%;
+}
+
+.classA {
+    background-color: #ccc;
+    width: 70%;
+    padding: 0 0.6em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
