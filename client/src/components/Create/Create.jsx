@@ -5,7 +5,7 @@ import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const { setData, condition, model, modifications, compartment, price, gears } = useContext(CreateContext);
+  const { setData, condition, model, modifications, compartment, price, gears, fuelType, power, cubature } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -27,6 +27,18 @@ export default function Create() {
     const value = e.target.value;
 
     setData(prev => ({ ...prev, price: value }));
+  }
+
+  const handlePowerChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, power: value}));
+  }
+
+  const handleCubatureChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, cubature: value}));
   }
 
     return (
@@ -107,10 +119,10 @@ export default function Create() {
       </Link>
     </li>
     <li>
-      <a href="#">
+      <Link to={'/fuel'}>
         Гориво*:
-        <span className={styles["static"]}>Изберете</span>
-      </a>
+        <span className={styles["static"]}>{fuelType || 'Изберете'}</span>
+      </Link>
     </li>
     <li>
       <div>
@@ -120,6 +132,8 @@ export default function Create() {
           name="horse-powers"
           className={styles["input-modify"]}
           placeholder="Мощност ]}к.с."
+          onChange={(e) => handlePowerChange(e)}
+          defaultValue={power || ''}
         />
       </div>
     </li>
@@ -127,10 +141,13 @@ export default function Create() {
       <div>
         Кубатура*:
         <input
-          type="text"
+          type="number"
           name="cubature"
           className={styles["input-modify"]}
-          placeholder="Мощност к.с."
+          placeholder="2000"
+          onChange={(e) => handleCubatureChange(e)}
+          defaultValue={cubature || 0}
+          min={0}
         />
       </div>
     </li>
