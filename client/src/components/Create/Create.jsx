@@ -5,7 +5,7 @@ import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const { setData, condition, model, modifications, compartment, price, gears, fuelType, power, cubature, year } = useContext(CreateContext);
+  const { setData, condition, model, modifications, compartment, price, gears, fuelType, power, cubature, year, mileage,  } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -39,6 +39,12 @@ export default function Create() {
     const value = e.target.value;
 
     setData(prev => ({...prev, cubature: value}));
+  }
+
+  const handleMileageChange = (e) => {
+    const value = e.targer.value;
+
+    setData(prev => ({...prev, mileage: value}));
   }
 
     return (
@@ -146,7 +152,7 @@ export default function Create() {
           className={styles["input-modify"]}
           placeholder="2000"
           onChange={(e) => handleCubatureChange(e)}
-          defaultValue={cubature || 0}
+          defaultValue={cubature || ''}
           min={0}
         />
       </div>
@@ -161,10 +167,13 @@ export default function Create() {
       <div>
         Пробег*:
         <input
-          type="text"
+          type="number"
           name="kilometres"
           className={styles["input-modify"]}
           placeholder="km"
+          min={0}
+          onChange={(e) => handleMileageChange(e)}
+          defaultValue={mileage || ''}
         />
       </div>
     </li>
