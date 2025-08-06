@@ -5,7 +5,7 @@ import { CreateContext } from '../../contexts/CreateContext';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
-  const { setData, condition, model, modifications, compartment, price, gears, fuelType, power, cubature } = useContext(CreateContext);
+  const { setData, condition, model, modifications, compartment, price, gears, fuelType, power, cubature, year } = useContext(CreateContext);
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -152,10 +152,10 @@ export default function Create() {
       </div>
     </li>
     <li>
-      <a href="#">
+      <Link to={'/year'}>
         Година*:
-        <span className={styles["static"]}>Изберете</span>
-      </a>
+        <span className={styles["static"]}>{year || 'Изберете'}</span>
+      </Link>
     </li>
     <li>
       <div>

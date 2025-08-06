@@ -1,0 +1,30 @@
+.yearUl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yearUl .yearLi {
+    list-style-type: none;
+    padding: 0.5em;
+    border-bottom: 1px solid gray;
+    width: 60%;
+    font-size: 1.2em;
+    position: relative;
+}
+
+.yearInput {
+    cursor: pointer;
+    display: none;
+}
+
+.yearInput:checked ~ label::after {
+    content: '✔️';
+    position: absolute;
+    right: 0;
+}
+
+.yearInput ~ label {
+    cursor: pointer;
+    width: 100%;
+}

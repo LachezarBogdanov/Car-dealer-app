@@ -16,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Compartment from './components/Compartment/Compartment'
 import Gears from './components/Gears/Gears'
 import Fuel from './components/Fuel/Fuel'
+import Year from './components/Year/Year'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path='/compartment' element={<Compartment />} />
           <Route path='/gears' element={<Gears />} />
           <Route path='/fuel' element={<Fuel />} />
+          <Route path='/year' element={<Year />} />
           </Routes>
       </div>
       </BrowserRouter>
