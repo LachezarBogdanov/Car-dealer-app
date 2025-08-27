@@ -17,6 +17,7 @@ import Compartment from './components/Compartment/Compartment'
 import Gears from './components/Gears/Gears'
 import Fuel from './components/Fuel/Fuel'
 import Year from './components/Year/Year'
+import Doors from './components/Doors/Doors'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -50,6 +51,7 @@ function App() {
           <Route path='/gears' element={<Gears />} />
           <Route path='/fuel' element={<Fuel />} />
           <Route path='/year' element={<Year />} />
+          <Route path='/doors' element={<Doors />} />
           </Routes>
       </div>
       </BrowserRouter>
