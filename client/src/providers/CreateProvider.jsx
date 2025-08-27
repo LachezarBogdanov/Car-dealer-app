@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { CreateContext } from "../contexts/CreateContext";
 
-
 export default function CreateProvider({
     children,
 }) {
-    const [data, setData] = useState({
-        condition: '',
+
+    const defaultValues = {
+         condition: '',
         model: '',
         modifications: '',
         compartment: '',
@@ -21,11 +21,18 @@ export default function CreateProvider({
         color: '',
         city: '',
         description: '',
-    });
+    }
+
+    const [data, setData] = useState(defaultValues);
+
+    const resetData = () => {
+        setData(defaultValues);
+    }
 
     return (
         <CreateContext.Provider value={{
             setData,
+            resetData,
             condition: data.condition,
             model: data.model,
             modifications: data.modifications,

@@ -18,4 +18,5 @@ export const CreateContext = createContext({
     city: '',
     description: '',
     setData() {},
+    resetData() {},
 })

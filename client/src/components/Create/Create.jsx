@@ -11,6 +11,7 @@ export default function Create() {
 
   const { 
     setData,
+    resetData,
     condition,
     model,
     modifications,
@@ -32,6 +33,8 @@ export default function Create() {
       const carData = data;
 
       await create(carData);
+
+      resetData();
 
       navigate('/');
   }
