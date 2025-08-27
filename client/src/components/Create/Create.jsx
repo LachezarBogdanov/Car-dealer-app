@@ -1,10 +1,14 @@
 import { useContext, useState } from 'react';
 import styles from './Create.module.css'
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { CreateContext } from '../../contexts/CreateContext';
+import { useCreateCar } from '../../api/carApi';
 
 export default function Create() {
   const [images, setImages] = useState([null, null, null, null, null]);
+  const { create } = useCreateCar();
+  const navigate = useNavigate();
+
   const { 
     setData,
     condition,
@@ -18,8 +22,19 @@ export default function Create() {
     cubature,
     year,
     mileage,
-    doorCount
+    doorCount,
+    color,
+    city,
+    description
   } = useContext(CreateContext);
+
+  const createHandler = async (data) => {
+      const carData = data;
+
+      await create(carData);
+
+      navigate('/');
+  }
 
   const handleImageChange = (index, e) => {
     const file = e.target.files[0];
@@ -56,9 +71,21 @@ export default function Create() {
   }
 
   const handleMileageChange = (e) => {
-    const value = e.targer.value;
+    const value = e.target.value;
 
     setData(prev => ({...prev, mileage: value}));
+  }
+
+  const handleCityChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, city: value}));
+  }
+
+  const handleDescriptionChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, description: value}));
   }
 
     return (
@@ -182,12 +209,12 @@ export default function Create() {
         Пробег*:
         <input
           type="number"
-          name="kilometres"
+          name="mileage"
           className={styles["input-modify"]}
           placeholder="km"
-          min={0}
           onChange={(e) => handleMileageChange(e)}
           defaultValue={mileage || ''}
+          min={0}
         />
       </div>
     </li>
@@ -198,10 +225,10 @@ export default function Create() {
       </Link>
     </li>
     <li>
-      <a href="#">
+      <Link to={'/color'}>
         Цвят*:
-        <span className={styles["static"]}>Изберете</span>
-      </a>
+        <span className={styles["static"]}>{color || 'Изберете'}</span>
+      </Link>
     </li>
     <li>
       <div>
@@ -211,6 +238,8 @@ export default function Create() {
           name="city"
           className={styles["input-modify"]}
           placeholder="Самоков"
+          onChange={(e) => handleCityChange(e)}
+          defaultValue={city || ''}
         />
       </div>
     </li>
@@ -220,9 +249,27 @@ export default function Create() {
         id="description"
         className={styles["descriptionText"]}
         placeholder='Описание'
+        onChange={(e) => handleDescriptionChange(e)}
+        defaultValue={description || ''}
       />
     </li>
-    <button className={styles["publish-btn"]}>Публикувай</button>
+    <button className={styles["publish-btn"]} onClick={() => createHandler({
+      condition,
+      model,
+      modifications,
+      compartment,
+      price,
+      gears,
+      fuelType,
+      power,
+      cubature,
+      year,
+      mileage,
+      doorCount,
+      color,
+      city,
+      description
+    })}>Публикувай</button>
   </ul>
 </>
 

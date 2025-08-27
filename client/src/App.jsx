@@ -12,12 +12,12 @@ import UserProvider from './providers/UserProvider'
 import Condition from './components/Condition/Condition'
 import CreateProvider from './providers/CreateProvider'
 import ModelChoose from './components/ModelChoose/ModelChoose'
-import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import Compartment from './components/Compartment/Compartment'
 import Gears from './components/Gears/Gears'
 import Fuel from './components/Fuel/Fuel'
 import Year from './components/Year/Year'
 import Doors from './components/Doors/Doors'
+import Color from './components/Color/Color'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -52,6 +52,7 @@ function App() {
           <Route path='/fuel' element={<Fuel />} />
           <Route path='/year' element={<Year />} />
           <Route path='/doors' element={<Doors />} />
+          <Route path='/color' element={<Color />} />
           </Routes>
       </div>
       </BrowserRouter>
