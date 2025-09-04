@@ -24,6 +24,8 @@ export default function CreateProvider({
     }
 
     const [data, setData] = useState(defaultValues);
+    const [images, setImages] = useState([null, null, null, null, null ]);
+
 
     const resetData = () => {
         setData(defaultValues);
@@ -33,6 +35,8 @@ export default function CreateProvider({
         <CreateContext.Provider value={{
             setData,
             resetData,
+            setImages,
+            images,
             condition: data.condition,
             model: data.model,
             modifications: data.modifications,

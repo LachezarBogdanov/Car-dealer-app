@@ -1,6 +1,5 @@
 import { createContext } from "react";
 
-
 export const CreateContext = createContext({
     condition: '',
     model: '',
@@ -17,6 +16,8 @@ export const CreateContext = createContext({
     color: '',
     city: '',
     description: '',
+    images: [],
+    setImages() {},
     setData() {},
     resetData() {},
 })

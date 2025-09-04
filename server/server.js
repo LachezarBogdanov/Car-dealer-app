@@ -1649,7 +1649,34 @@
     			_createdOn: 1616237272948,
     			_updatedOn: 1616237293676
     		}
-    	}
+    	},
+        cars: {
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+            "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+            "condition": "В добро състояние",
+            "model": "BMW",
+            "modifications": "420 d",
+            "compartment": "Купе",
+            "price": "100000",
+            "gears": "Автоматични",
+            "fuelType": "Дизел",
+            "power": "450 hp",
+            "cubature": "2000",
+            "year": "2021",
+            "mileage": "50000",
+            "doorCount": "2/3",
+            "color": "Син",
+            "city": "Каспичан",
+            "description": "Доста запазена. ",
+            "iamges": [
+                "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995056/uwoyq7mspudgltsjlx9r.jpg",
+                "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995062/qposp5naupn72uxq3hgi.jpg",
+                "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995067/mtmmum4kmwqdzoh3lsub.jpg"
+        ],
+        "_createdOn": 1756995130885,
+        "_id": "975737d6-f5e4-4098-833e-11d2714f3e48"
+    }
+        }
     };
     var rules$1 = {
     	users: {

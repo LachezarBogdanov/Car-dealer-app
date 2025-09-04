@@ -1,17 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styles from './Create.module.css'
 import { Link, useNavigate } from 'react-router';
 import { CreateContext } from '../../contexts/CreateContext';
 import { useCreateCar } from '../../api/carApi';
 
 export default function Create() {
-  const [images, setImages] = useState([null, null, null, null, null]);
   const { create } = useCreateCar();
   const navigate = useNavigate();
 
   const { 
     setData,
     resetData,
+    setImages,
     condition,
     model,
     modifications,
@@ -26,11 +26,15 @@ export default function Create() {
     doorCount,
     color,
     city,
-    description
+    description,
+    images,
   } = useContext(CreateContext);
 
   const createHandler = async (data) => {
-      const carData = data;
+      const carData = {
+        ...data,
+        iamges: images.filter(Boolean),
+      };
 
       await create(carData);
 
@@ -39,12 +43,37 @@ export default function Create() {
       navigate('/');
   }
 
-  const handleImageChange = (index, e) => {
+  const handleImageChange = async (index, e) => {
     const file = e.target.files[0];
-    if(file) {
-      const newImages = [...images];
-      newImages[index] = URL.createObjectURL(file);
-      setImages(newImages);
+    if(!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'CarsBg');
+
+    try {
+      const res = await fetch(
+          `https://api.cloudinary.com/v1_1/dzqnrdad5/image/upload`,
+          {
+            method: 'POST',
+            body: formData,
+          }
+        );
+
+        const data = await res.json();
+
+        if(data.secure_url) {
+          const newImages = [...images];
+          newImages[index] = data.secure_url;
+          setImages(newImages);
+
+          setData(prev => ({
+            ...prev,
+            images: newImages.filter(Boolean),
+          }));
+        }
+    } catch (error) {
+      console.error('Upload failed', error);
       
     }
   }
