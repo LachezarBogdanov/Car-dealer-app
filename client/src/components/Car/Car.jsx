@@ -1,29 +1,40 @@
 import { useNavigate } from 'react-router';
 import styles from './Car.module.css'
 
-export default function Car() {
+export default function Car({
+    car,
+}) {
     const navigate = useNavigate();
+
+    const date = new Date(car._createdOn);
+
+    const formatedDate = 
+        date.getDate()
+        + "/"
+        + (date.getMonth() + 1)
+        + "/"
+        + date.getFullYear();
 
     return (
         <>
-    <div className={styles["car-card"]} onClick={() => navigate('/details')}>
+    <div className={styles["car-card"]} onClick={() => navigate(`/details/${car._id}`)}>
         <div className={styles["car-top"]}>
-        <span className={styles["timestamp"]}>Dnes 18:00</span>
+        <span className={styles["timestamp"]}>{formatedDate}</span>
         <i className="fa-regular fa-heart favourite"></i>
         </div>
         <div className={styles["img-price"]}>
-            <img src="mercedes.jpg" alt="Honda CR-V" />
+            <img src={car.iamges[0]} alt="Honda CR-V" />
             <div className={styles["car-price"]}>
-            <span className={styles["price-bgn"]}>13,990 BGN</span>
-            <span className={styles["price-eur"]}>7,152.97 EUR</span>
+            <span className={styles["price-bgn"]}>{car.price} BGN</span>
+            <span className={styles["price-eur"]}>{(car.price * 0.51).toFixed(0)} EUR</span>
             </div>
         </div>
-        <h3>Honda CR-V 2.0</h3>
-        <p className={styles["details"]}>2007, Бензин, 204000 км.</p>
+        <h3>{car.model} {car.modifications} {car.power}</h3>
+        <p className={styles["details"]}>{car.year}, {car.fuelType}, {car.mileage} км.</p>
         <p className={styles["description"]}>
-            Нов внос от Швейцария… Един предишен собственик…
+            {car.description}
         </p>
-        <p className={styles["location"]}>IVO AUTO, Бургас</p>
+        <p className={styles["location"]}>IVO AUTO, {car.city}</p>
     </div>
 </>
 

@@ -1,8 +1,10 @@
+import { useGetCars } from '../../api/carApi';
 import Car from '../Car/Car';
 import styles from './Home.module.css'
 
 export default function Home() {
-    const cars = ['car1', 'car2'];
+    const { cars } = useGetCars();
+    
     return (
         <main>
   <div className={styles["filters-container"]}>
@@ -24,7 +26,7 @@ export default function Home() {
     </div>
   </div>
   <section className={styles["car-listings"]}>
-    {cars.map(car => (<Car key={car} car={car}/>))}
+    {cars.map(car => (<Car key={car._id} car={car}/>))}
   </section>
 </main>
 
