@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { useEffect } from "react";
+import request from "../utils/request";
 
 
 const baseUrl = 'http://localhost:3030/data/cars';
@@ -18,15 +19,27 @@ export const useCreateCar = () => {
 }
 
 export const useGetCars = () => {
-    const { request } = useAuth();
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
         request.get(baseUrl)
             .then((data) => {
                 setCars(data);
-            })
+            });
     }, []);
 
     return {cars};
+}
+
+export const useGetCar = (carId) => {
+    const [car, setCar] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${carId}`)
+            .then((data) => {
+                setCar(data)
+            });
+    }, [carId]);
+
+    return {car};
 }

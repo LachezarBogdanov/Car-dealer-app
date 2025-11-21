@@ -1668,7 +1668,7 @@
             "color": "Син",
             "city": "Каспичан",
             "description": "Доста запазена. ",
-            "iamges": [
+            "images": [
                 "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995056/uwoyq7mspudgltsjlx9r.jpg",
                 "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995062/qposp5naupn72uxq3hgi.jpg",
                 "https://res.cloudinary.com/dzqnrdad5/image/upload/v1756995067/mtmmum4kmwqdzoh3lsub.jpg"

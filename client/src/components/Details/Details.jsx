@@ -1,21 +1,60 @@
+import { useParams } from 'react-router';
 import styles from './Details.module.css'
+import { useGetCar } from '../../api/carApi';
+import { useEffect, useState } from 'react';
 
 export default function Details() {
+  const { carId } = useParams();
+  const { car } = useGetCar(carId);
+  const date = new Date(car._createdOn);
+  const [mainImage, setMainImage] = useState(null);
+  const [mainImageIndex, setMainImageIndex] = useState(0);
+  console.log(car);
+  
+
+  useEffect(() => {
+    if(car?.images) {
+      setMainImage(car.images[0]);
+    }
+  }, [setMainImage, car.images]);
+
+    const formatedDate = 
+        date.getDate()
+        + "/"
+        + (date.getMonth() + 1)
+        + "/"
+        + date.getFullYear();
+  
+    const handleMainImageChange = (newImage, index) => {
+      setMainImage(newImage);
+      setMainImageIndex(index);
+    }
+  
     return (
         <main>
   <section className={styles["car-details"]}>
     <div className={styles["car-heading"]}>
-      <p className={styles["car-title"]}>Kia Ceed 1.4i</p>
+      <p className={styles["car-title"]}>{car.model} {car.modifications}</p>
       <div className={styles["price"]}>
-        <p className={styles["bgn"]}>4.500 BGN</p>
-        <p className={styles["eur"]}>2,300 EUR</p>
+        <p className={styles["bgn"]}>{car.price} BGN</p>
+        <p className={styles["eur"]}>{car.price * 0.51} EUR</p>
       </div>
     </div>
     <div className={styles["car-info"]}>
       <p className={styles["extras"]}>
-        Септември 2010, Комби, Употребяван автомобил, нов внос, В добро
-        състояние, Дизел, 224 450км, Ръчни скорости, 177к.с., EURO 5, 2000см3,
-        4/5 врати, Черен металик
+        {formatedDate},
+        {car.compartment},
+        {" " + car.condition}, 
+        {" " + car.description}, 
+        {" " + car.fuelType}, 
+        {" " + car.mileage}км, 
+        {" " + car.gears} скорости, 
+        {" " + car.power}, 
+        {" " + car.cubature}см3,
+        {" " + car.doorCount} врати,  
+        {" " + car.color},
+        {" " + car.year},
+        {" " + car.city}
       </p>
     </div>
     <div className={styles["container"]}>
@@ -51,21 +90,17 @@ export default function Details() {
         </p>
       </div>
       <div className={styles["gallery"]}>
-        <img src="mercedes.jpg" alt="Main Car Image" className={styles["main-image"]} />
+        <img src={mainImage} alt="Main Car Image" className={styles["main-image"]} />
         <div className={styles["pagination"]}>
-          <span className={`${styles['dot']} ${styles['active']}`} />
-          <span className={styles["dot"]} />
-          <span className={styles["dot"]} />
-          <span className={styles["dot"]} />
+          {car?.images?.map((_, index) => (
+             <span key={index} className={`${styles['dot']} ${mainImageIndex == index ? `${styles['active']}` : ''}`}/>
+          ))}
         </div>
         <div className={styles["thumbnails"]}>
-          <img src="mercedes.jpg" alt="thumb1" />
-          <img src="mercedes.jpg" alt="thumb2" />
-          <img src="mercedes.jpg" alt="thumb3" />
-          <img src="mercedes.jpg" alt="thumb4" />
-          <img src="mercedes.jpg" alt="thumb5" />
-          <img src="mercedes.jpg" alt="thumb6" />
-          <img src="mercedes.jpg" alt="thumb7" />
+          {car?.images?.map((img, index) => 
+              <img key={index} src={img} alt="thumb1" onClick={() => handleMainImageChange(img, index)} />
+          )}
+          
         </div>
       </div>
     </div>

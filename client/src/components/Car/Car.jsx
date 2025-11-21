@@ -23,7 +23,7 @@ export default function Car({
         <i className="fa-regular fa-heart favourite"></i>
         </div>
         <div className={styles["img-price"]}>
-            <img src={car.iamges[0]} alt="Honda CR-V" />
+            <img src={car?.images?.[0]} alt="Honda CR-V" />
             <div className={styles["car-price"]}>
             <span className={styles["price-bgn"]}>{car.price} BGN</span>
             <span className={styles["price-eur"]}>{(car.price * 0.51).toFixed(0)} EUR</span>
