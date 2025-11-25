@@ -131,3 +131,10 @@ main {
         cursor: pointer;
         border-radius: 1em;
     }
+
+    .date {
+      position: absolute;
+      left: 290px;
+      bottom: 84%;
+      color: #555;
+    }

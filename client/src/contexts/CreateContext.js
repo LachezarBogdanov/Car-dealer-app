@@ -16,6 +16,8 @@ export const CreateContext = createContext({
     color: '',
     city: '',
     description: '',
+    features: '',
+    phone: '',
     images: [],
     setImages() {},
     setData() {},

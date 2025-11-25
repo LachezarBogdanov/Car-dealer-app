@@ -21,6 +21,8 @@ export default function CreateProvider({
         color: '',
         city: '',
         description: '',
+        features: '',
+        phone: '',
     }
 
     const [data, setData] = useState(defaultValues);
@@ -52,6 +54,8 @@ export default function CreateProvider({
             color: data.color,
             city: data.city,
             description: data.description,
+            features: data.features,
+            phone: data.phone,
             }}>
             {children}
         </CreateContext.Provider>

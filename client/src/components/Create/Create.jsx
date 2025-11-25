@@ -28,6 +28,8 @@ export default function Create() {
     city,
     description,
     images,
+    features,
+    phone,
   } = useContext(CreateContext);
 
   const createHandler = async (data) => {
@@ -118,6 +120,18 @@ export default function Create() {
     const value = e.target.value;
 
     setData(prev => ({...prev, description: value}));
+  }
+
+  const handleFeaturesChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, features: value}));
+  }
+
+  const hanldePhoneChange = (e) => {
+    const value = e.target.value;
+
+    setData(prev => ({...prev, phone: value}));
   }
 
     return (
@@ -276,6 +290,19 @@ export default function Create() {
       </div>
     </li>
     <li>
+      <div>
+        Телефон:
+        <input 
+          type="text"
+          name='phone'
+          className={styles["input-modify"]}
+          placeholder='0888...'
+          onChange={(e) => hanldePhoneChange(e)}
+          defaultValue={phone || ''}
+          />
+      </div>
+    </li>
+    <li>
       <textarea
         name="description"
         id="description"
@@ -284,6 +311,18 @@ export default function Create() {
         onChange={(e) => handleDescriptionChange(e)}
         defaultValue={description || ''}
       />
+    </li>
+    <li>
+      <textarea 
+      name="features" 
+      id="features"
+      className={styles["descriptionText"]}
+      placeholder='Особености и Екстри'
+      onChange={(e) => handleFeaturesChange(e)}
+      defaultValue={features || ''}
+      >
+
+      </textarea>
     </li>
     <button className={styles["publish-btn"]} onClick={() => createHandler({
       condition,
