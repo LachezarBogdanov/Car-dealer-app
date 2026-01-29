@@ -4,6 +4,7 @@ import styles from './Header.module.css'
 export default function Header({
     showMenu,
 }) {
+    
     return (
          <header>
     <section className={styles["sidebar-left"]}>
@@ -21,7 +22,9 @@ export default function Header({
     </section>
     <section className={styles["sidebar-right"]}>
         <div className={styles["favourites-icon"]}>
-        <i className="fa-regular fa-heart" />
+            <NavLink to={'/favourites'}>
+                <i className="fa-regular fa-heart"></i>
+            </NavLink>
         </div>
         <div className={styles["sort-by"]}>
         <i className="fa-solid fa-sort" />

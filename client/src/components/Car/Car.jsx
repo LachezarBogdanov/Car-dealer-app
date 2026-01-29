@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router';
 import styles from './Car.module.css'
+import { useContext } from 'react';
+import { FavouriteContext } from '../../contexts/FavouriteContext';
 
 export default function Car({
     car,
 }) {
     const navigate = useNavigate();
+    const { addToFavourite } = useContext(FavouriteContext);
 
     const date = new Date(car._createdOn);
 
@@ -15,13 +18,20 @@ export default function Car({
         + "/"
         + date.getFullYear();
 
+    const addToFavourites = () => {
+        addToFavourite(car);
+
+        navigate('/favourites');
+    }
+
     return (
         <>
-    <div className={styles["car-card"]} onClick={() => navigate(`/details/${car._id}`)}>
+    <div className={styles["car-card"]}>
         <div className={styles["car-top"]}>
         <span className={styles["timestamp"]}>{formatedDate}</span>
-        <i className="fa-regular fa-heart favourite"></i>
+        <i className={`fa-regular fa-heart favourite ${styles.heart}`} onClick={() => addToFavourites()}></i>
         </div>
+        <div onClick={() => navigate(`/details/${car._id}`)}>
         <div className={styles["img-price"]}>
             <img src={car?.images?.[0]} alt="Honda CR-V" />
             <div className={styles["car-price"]}>
@@ -35,6 +45,7 @@ export default function Car({
             {car.description}
         </p>
         <p className={styles["location"]}>IVO AUTO, {car.city}</p>
+        </div>
     </div>
 </>
 

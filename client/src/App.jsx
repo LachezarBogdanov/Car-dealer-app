@@ -19,12 +19,15 @@ import Year from './components/Year/Year'
 import Doors from './components/Doors/Doors'
 import Color from './components/Color/Color'
 import MyCars from './components/MyCars/MyCars'
+import Favourites from './components/Favourites/Favourites'
+import FavouriteProvider from './providers/FavouriteProvider'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
 
   return (
     <>
+    <FavouriteProvider>
     <CreateProvider>
     <UserProvider>
     <BrowserRouter>
@@ -55,11 +58,13 @@ function App() {
           <Route path='/doors' element={<Doors />} />
           <Route path='/color' element={<Color />} />
           <Route path='/myCars' element={<MyCars />} />
+          <Route path='/favourites' element={<Favourites />} />
           </Routes>
       </div>
       </BrowserRouter>
       </UserProvider>
       </CreateProvider>
+    </FavouriteProvider>
     </>
   )
 }
