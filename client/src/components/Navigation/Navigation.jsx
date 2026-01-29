@@ -31,7 +31,7 @@ export default function Navigation({
             Начало
             </NavLink>
             <NavLink to={'/create'} onClick={() => showMenu(false)}>+ Публикувай обява</NavLink>
-            <NavLink to={'/myAdd'} onClick={() => showMenu(false)}>Моите обяви</NavLink>
+            <NavLink to={'/myCars'} onClick={() => showMenu(false)}>Моите обяви</NavLink>
         </section>
         <section className={styles["menu-options"]}>
             {isAuthenticated ? (

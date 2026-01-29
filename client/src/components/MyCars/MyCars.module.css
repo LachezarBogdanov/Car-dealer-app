@@ -1,0 +1,7 @@
+.wrapp {
+    padding: 2em;
+}
+
+.wrapp > * {
+    gap: 1em;
+}
