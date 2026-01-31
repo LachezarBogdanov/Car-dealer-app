@@ -1,9 +1,24 @@
+import { useState } from 'react';
 import { useGetCars } from '../../api/carApi';
 import Car from '../Car/Car';
 import styles from './Home.module.css'
 
 export default function Home() {
     const { cars } = useGetCars();
+
+    const [filter, setFilters] = useState({
+      compartment: null,
+      model: null,
+      fuelType: null,
+      gears: null,
+      price: null,
+      year: null,
+      city: null,
+      color: null,
+      doorCount: null,
+      power: null,
+      condition: null,
+  });
     
     return (
         <main>
@@ -16,13 +31,9 @@ export default function Home() {
       <span className={styles["tag"]}>Цена</span>
       <span className={`${styles["tag"]} ${styles["selected"]}`}>Година: 2020+</span>
       <span className={styles["tag"]}>Къде</span>
-      <span className={styles["tag"]}>От</span>
       <span className={styles["tag"]}>Цвят</span>
       <span className={styles["tag"]}>Брой врати</span>
       <span className={styles["tag"]}>Мощност</span>
-      <span className={styles["tag"]}>Екстри</span>
-      <span className={styles["tag"]}>Волан</span>
-      <span className={styles["tag"]}>Публикувани</span>
     </div>
   </div>
   <section className={styles["car-listings"]}>
