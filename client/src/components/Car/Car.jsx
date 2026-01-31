@@ -21,7 +21,7 @@ export default function Car({
     const addToFavourites = () => {
         addToFavourite(car);
 
-        navigate('/favourites');
+        navigate('/myCars');
     }
 
     return (

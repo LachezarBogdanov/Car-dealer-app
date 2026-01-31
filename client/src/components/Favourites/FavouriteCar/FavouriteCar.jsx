@@ -1,11 +1,15 @@
 import { useNavigate } from 'react-router';
 import styles from '../FavouriteCar/FavouriteCar.module.css';
+import { useContext } from 'react';
+import { FavouriteContext } from '../../../contexts/FavouriteContext';
 
 export default function FavouriteCar({
     car,
+    index
 }) {
      const navigate = useNavigate();
-
+     const { removeFavourite } = useContext(FavouriteContext);
+    
      const date = new Date(car._createdOn);
 
      const formatedDate = 
@@ -15,11 +19,18 @@ export default function FavouriteCar({
         + "/"
         + date.getFullYear();
 
+        const handleRemoveFavourite = () => {
+            removeFavourite(index);
+
+            navigate('/myCars');
+        }
+
     return (
         <>
-            <div className={styles["car-card"]} onClick={() => navigate(`/details/${car._id}`)}>
+            <div className={styles["car-card"]}>
                     <div className={styles["car-top"]}>
                     <span className={styles["timestamp"]}>{formatedDate}</span>
+                    <span className={styles.deleteBtn}><i className="fa-solid fa-x" onClick={() => handleRemoveFavourite()}></i></span>
                     </div>
                     <div className={styles["img-price"]}>
                         <img src={car?.images?.[0]} alt="Honda CR-V" />

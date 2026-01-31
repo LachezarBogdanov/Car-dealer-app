@@ -117,17 +117,22 @@
   margin-top: auto;
 }
 
-.heart {
-  padding: 8px;
-  border-radius: 50%;
-  transition: backgroud-color 0.3s ease, color 0.3s ease;
+.deleteBtn {
   position: absolute;
-  top: 3px;
-  left: 90%;
+  left: 93%;
   z-index: 10;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.heart:hover {
-  background-color: red;
-  color: white;
+.deleteBtn:hover {
+  color: red;
+  transform: scale(1.2);
 }
+

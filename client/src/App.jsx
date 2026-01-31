@@ -27,10 +27,10 @@ function App() {
 
   return (
     <>
-    <FavouriteProvider>
     <CreateProvider>
     <UserProvider>
     <BrowserRouter>
+    <FavouriteProvider>
     {/* <ScrollToTop /> */}
       <div className="main">
       <Header showMenu={setIsMenuShown} />
@@ -57,14 +57,13 @@ function App() {
           <Route path='/year' element={<Year />} />
           <Route path='/doors' element={<Doors />} />
           <Route path='/color' element={<Color />} />
-          <Route path='/myCars' element={<MyCars />} />
-          <Route path='/favourites' element={<Favourites />} />
+          <Route path='/myCars' element={<Favourites />} />
           </Routes>
       </div>
+    </FavouriteProvider>
       </BrowserRouter>
       </UserProvider>
       </CreateProvider>
-    </FavouriteProvider>
     </>
   )
 }

@@ -7,13 +7,11 @@ export default function FavouriteProvider({
     children,
 }) {
     const { _id } = useAuth();
-
+    
     const [favouriteItems, setFavouriteItems] = useState([]);
 
     useEffect(() => {
         if(_id) {
-            console.log(_id);
-            
             const savedFavourites = sessionStorage.getItem(`favourites_${_id}`);
 
             setFavouriteItems(savedFavourites ? JSON.parse(savedFavourites) : []);
