@@ -13,7 +13,8 @@ export default function Favourites() {
                 ? (favouriteItems.map((car, index) => (
                     <FavouriteCar key={car._id} car={car} index={index}/>
                 )))
-                : <h1>No favourite cars yet!</h1>
+                : 
+                    <h1>No favourite cars yet!</h1>
             }
         </div>
         </>
