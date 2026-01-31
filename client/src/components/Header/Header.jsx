@@ -22,7 +22,7 @@ export default function Header({
     </section>
     <section className={styles["sidebar-right"]}>
         <div className={styles["favourites-icon"]}>
-            <NavLink to={'/favourites'}>
+            <NavLink to={'/myCars'}>
                 <i className="fa-regular fa-heart"></i>
             </NavLink>
         </div>
