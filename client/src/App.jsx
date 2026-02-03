@@ -20,7 +20,6 @@ import Doors from './components/Doors/Doors'
 import Color from './components/Color/Color'
 import Favourites from './components/Favourites/Favourites'
 import FavouriteProvider from './providers/FavouriteProvider'
-import BasicSearch from './components/BasicSearch/BasicSearch'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -58,7 +57,6 @@ function App() {
           <Route path='/doors' element={<Doors />} />
           <Route path='/color' element={<Color />} />
           <Route path='/myCars' element={<Favourites />} />
-          <Route path='/modal' element={<BasicSearch />} />
           </Routes>
       </div>
     </FavouriteProvider>
