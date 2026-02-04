@@ -20,6 +20,7 @@ import Doors from './components/Doors/Doors'
 import Color from './components/Color/Color'
 import Favourites from './components/Favourites/Favourites'
 import FavouriteProvider from './providers/FavouriteProvider'
+import MyCars from './components/MyCars/MyCars'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -56,7 +57,8 @@ function App() {
           <Route path='/year' element={<Year />} />
           <Route path='/doors' element={<Doors />} />
           <Route path='/color' element={<Color />} />
-          <Route path='/myCars' element={<Favourites />} />
+          <Route path='/favourites' element={<Favourites />} />
+          <Route path='/myCars' element={<MyCars />} />
           </Routes>
       </div>
     </FavouriteProvider>

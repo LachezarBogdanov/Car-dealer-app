@@ -4,12 +4,14 @@ import { useGetCars } from '../../api/carApi';
 import Car from '../Car/Car';
 import styles from './Home.module.css'
 import BasicSearch from '../BasicSearch/BasicSearch';
+import ModelSearch from '../ModelSearch/ModelSearch';
 
 export default function Home() {
     const { cars } = useGetCars();
     const [isOpen, setIsOpen] = useState(false);
     const [modalProperties, setModalProperties] = useState([]);
     const [modalName, setModalName] = useState('');
+    const [isOpenModal, setIsOpenModal] = useState(false);
 
   //   const [filters, setFilters] = useState({
   //     compartment: null,
@@ -113,8 +115,186 @@ export default function Home() {
     setIsOpen(true);
   }
 
+  const handleModelChooseModal = () => {
+    setModalProperties([
+      'VW',
+      'Mercedes-Benz',
+      'BMW',
+      'Audi',
+      'Opel',
+      'Peugeot',
+      'Toyota',
+      'Ford',
+      'Renault',
+      'Citroen',
+      'Nissan',
+      'Hyundai',
+      'Honda',
+      'Kia',
+      'Skoda',
+      'Fiat',
+      'Mazda',
+      'Seat',
+      'Mitsubishi',
+      'Volvo',
+      'Dacia',
+      'Suzuki',
+      'Subaru',
+      'Chevrolet',
+      'Jeep',
+      'Land Rover',
+      'Alfa Romeo',
+      'Mini',
+      'Porsche',
+      'Daihatsu',
+      'Lexus',
+      'Jaguar',
+      'Lancia',
+      'Chrysler',
+      'Ssangyong',
+      'Smart',
+      'Dodge',
+      'Lada',
+      'Infiniti',
+      'Saab',
+      'Rover',
+      'Tesla',
+      'Daewoo',
+      'Range Rover',
+      'Great Wall',
+      'Isuzu',
+      'DS',
+      'Maserati',
+      'Cadillac',
+      'Moskvich',
+      'UAZ',
+      'Bentley',
+      'Tata',
+      'Trabant',
+      'DR',
+      'Acura',
+      'Wartburg',
+      'Hummer',
+      'Lincoln',
+      'MG',
+      'GMC',
+      'GAZ',
+      'Volga',
+      'Cupra',
+      'Lamborghini',
+      'Haval',
+      'Aston Martin',
+      'Pontiac',
+      'BYD',
+      'Zaz',
+      'Rolls Royce',
+      'Mahindra',
+      'Maybach',
+      'Buick',
+      'DFSK',
+      'Ferrari',
+      'Asia Motors',
+      'Genesis',
+      'McLaren',
+      'Iveco',
+      'ВАЗ',
+      'Simca',
+      'Lync and Co',
+      'Corvette',
+      'Yogomo',
+      'Talbot',
+      'BAW',
+      'Microcar',
+      'NSU',
+      'Scion',
+      'Polestar',
+      'Alpina',
+      'Варшава',
+      'Plymouth',
+      'Aro',
+      'Zastava',
+      'Landwind',
+      'Excalibur',
+      'Jmev',
+      'Ligier',
+      'Cenntro',
+      'Gac Gonow',
+      'Lotus',
+      'Aixam',
+      'Austin',
+      'Datsun',
+    ]);
+
+    setModalName('Марка');
+
+    setIsOpenModal(true);
+  }
+
+  const handleWhereChooseModal = () => {
+    setModalProperties([
+      'София',
+      'Варна',
+      'Пловдив',
+      'Враца',
+      'Бургас',
+      'Стара Загора',
+      'Дупница',
+      'Монтана',
+      'Шумен',
+      'Хасково',
+      'Плевен',
+      'Сливен',
+      'Русе',
+      'Добрич',
+      'Велико Търново',
+      'Пазарджик',
+      'Перник',
+      'Казанлък',
+      'Благоевград',
+      'Габрово',
+      'Кюстендил',
+      'Разград',
+      'Силистра',
+      'Кърджали',
+      'Троян',
+      'Ямбол',
+      'Търговище',
+      'Димитровград',
+      'Видин',
+      'Петрич',
+      'Гоце Делчев',
+      'Асеновград',
+      'Лясковец',
+      'Карлово',
+      'Провадия',
+      'Горна Оряховица',
+      'Септември',
+      'Панагюрище',
+      'Червен бряг',
+      'Елин Пелин',
+      'Велинград',
+      'Айтос',
+      'Свищов',
+      'Харманли',
+      'Смолян',
+      'Луковит',
+      'Левски',
+      'Ловеч',
+      'Кирилово',
+      'Нови пазар',
+    ]);
+
+    setModalName('Къде');
+
+    setIsOpenModal(true);
+  }
+
   const handleCloseModal = () => {
     setIsOpen(false);
+  }
+
+  const handleCloseModelModal = () => {
+    setIsOpenModal(false);
   }
     
     return (
@@ -122,12 +302,12 @@ export default function Home() {
   <div className={styles["filters-container"]}>
     <div className={styles["filter-tags"]}>
       <span className={styles["tag"]} onClick={handleCompartmentModal}>Купе</span>
-      <span className={`${styles["tag"]} ${styles["selected"]}`}>Марка: BMW</span>
+      <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleModelChooseModal}>Марка: BMW</span>
       <span className={styles["tag"]} onClick={handleFuelModal}>Гориво</span>
       <span className={styles["tag"]} onClick={handleGearsModal}>Скорости</span>
       <span className={styles["tag"]}>Цена</span>
       <span className={`${styles["tag"]} ${styles["selected"]}`}>Година: 2020+</span>
-      <span className={styles["tag"]}>Къде</span>
+      <span className={styles["tag"]} onClick={handleWhereChooseModal}>Къде</span>
       <span className={styles["tag"]} onClick={handleColorModal}>Цвят</span>
       <span className={styles["tag"]} onClick={handleDoorCountModal}>Брой врати</span>
       <span className={styles["tag"]}>Мощност</span>
@@ -139,6 +319,9 @@ export default function Home() {
 
   {isOpen &&
     <BasicSearch onClose={handleCloseModal} btnValues={modalProperties} name={modalName} />}
+
+  {isOpenModal &&
+    <ModelSearch onClose={handleCloseModelModal} btnValues={modalProperties} name={modalName} />}
 </main>
 
     );

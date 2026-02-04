@@ -10,8 +10,8 @@
 
 .modal {
   background: #ffffff;
-  width: 90%;
-  max-width: 480px;
+  width: 100%;
+  max-width: 680px;
   max-height: 70vh;
   border-radius: 14px;
   padding: 20px;
@@ -81,6 +81,44 @@
 .tag.active {
   background: #e67e22;
   color: white;
+}
+
+input.inputSearch {
+    margin-top: 1em;
+}
+
+.search input::placeholder {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.search {
+  position: relative;
+}
+
+.search label {
+  pointer-events: none;
+}
+
+.search label i {
+  margin-right: 0.5em;
+}
+
+.search label {
+    position: absolute;
+    left: 20px;
+    top: 26px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.search input:focus + label {
+  top: -10%;
+  left: 0;
+  transition: 0.2s ease-in;
+}
+
+.search input:focus + label {
+  color: orange;
 }
 
 @keyframes fadeIn {
