@@ -5,6 +5,7 @@ import Car from '../Car/Car';
 import styles from './Home.module.css'
 import BasicSearch from '../BasicSearch/BasicSearch';
 import ModelSearch from '../ModelSearch/ModelSearch';
+import PriceRangeModal from '../PriceRangeModal/PriceRangeModal';
 
 export default function Home() {
     const { cars } = useGetCars();
@@ -12,6 +13,7 @@ export default function Home() {
     const [modalProperties, setModalProperties] = useState([]);
     const [modalName, setModalName] = useState('');
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenPrice, setIsOpenPrice] = useState(false);
 
   //   const [filters, setFilters] = useState({
   //     compartment: null,
@@ -289,12 +291,20 @@ export default function Home() {
     setIsOpenModal(true);
   }
 
+  const handleOpenPriceModal = () => {
+    setIsOpenPrice(true);
+  }
+
   const handleCloseModal = () => {
     setIsOpen(false);
   }
 
   const handleCloseModelModal = () => {
     setIsOpenModal(false);
+  }
+
+  const handleClosePrice = () => {
+    setIsOpenPrice(false);
   }
     
     return (
@@ -305,7 +315,7 @@ export default function Home() {
       <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleModelChooseModal}>Марка: BMW</span>
       <span className={styles["tag"]} onClick={handleFuelModal}>Гориво</span>
       <span className={styles["tag"]} onClick={handleGearsModal}>Скорости</span>
-      <span className={styles["tag"]}>Цена</span>
+      <span className={styles["tag"]} onClick={handleOpenPriceModal}>Цена</span>
       <span className={`${styles["tag"]} ${styles["selected"]}`}>Година: 2020+</span>
       <span className={styles["tag"]} onClick={handleWhereChooseModal}>Къде</span>
       <span className={styles["tag"]} onClick={handleColorModal}>Цвят</span>
@@ -322,6 +332,9 @@ export default function Home() {
 
   {isOpenModal &&
     <ModelSearch onClose={handleCloseModelModal} btnValues={modalProperties} name={modalName} />}
+
+  {isOpenPrice &&
+    <PriceRangeModal onClose={handleClosePrice} />}
 </main>
 
     );
