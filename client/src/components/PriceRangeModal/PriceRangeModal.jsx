@@ -10,7 +10,7 @@ export default function PriceRangeModal({
     onClose,
 }) {
     const [values, setValues] = useState([0, 50000]);
-
+    
   return (
     <>
         <div className={styles.priceOverlay} onClick={onClose}>
@@ -21,7 +21,7 @@ export default function PriceRangeModal({
             </div>
             <div className={styles.labels}>
                 <span>{values[0]} EUR</span>
-                <span>{values[1]}+ EUR</span>
+                <span>{values[1]} {values[1] === 50000 ? '+' : ''} EUR</span>
             </div>
 
         <Range

@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useGetCars } from '../../api/carApi';
 import Car from '../Car/Car';
 import styles from './Home.module.css'
@@ -7,6 +7,8 @@ import BasicSearch from '../BasicSearch/BasicSearch';
 import ModelSearch from '../ModelSearch/ModelSearch';
 import PriceRangeModal from '../PriceRangeModal/PriceRangeModal';
 import PowerRangeModal from '../PowerRangeModal/PowerRangeModal';
+import YearSearchModal from '../YearSearchModal/YearSearchModal';
+import { SearchContext } from '../../contexts/SearchContext';
 
 export default function Home() {
     const { cars } = useGetCars();
@@ -16,6 +18,14 @@ export default function Home() {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isOpenPrice, setIsOpenPrice] = useState(false);
     const [isOpenPower, setIsOpenPower] = useState(false);
+    const [isOpenYear, setIsOpenYear] = useState(false);
+    const { 
+      compartment,
+      fuelType,
+      gears,
+      color,
+      doorCount,
+     } = useContext(SearchContext);
 
   //   const [filters, setFilters] = useState({
   //     compartment: null,
@@ -300,6 +310,10 @@ export default function Home() {
     setIsOpenPower(true);
   }
 
+  const handleOpenYearModal = () => {
+    setIsOpenYear(true);
+  }
+
   const handleCloseModal = () => {
     setIsOpen(false);
   }
@@ -315,20 +329,57 @@ export default function Home() {
   const handleClosePower = () => {
     setIsOpenPower(false);
   }
+
+  const handleCloseYear = () => {
+    setIsOpenYear(false);
+  }
     
     return (
         <main>
   <div className={styles["filters-container"]}>
     <div className={styles["filter-tags"]}>
-      <span className={styles["tag"]} onClick={handleCompartmentModal}>Купе</span>
+
+      <span 
+        className={`${styles.tag} ${compartment ? styles.selected : ''}`} 
+        onClick={handleCompartmentModal}
+        >
+          Купе{compartment ? `${': '}${compartment}` : ''}
+      </span>
+
       <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleModelChooseModal}>Марка: BMW</span>
-      <span className={styles["tag"]} onClick={handleFuelModal}>Гориво</span>
-      <span className={styles["tag"]} onClick={handleGearsModal}>Скорости</span>
+
+      <span 
+        className={`${styles["tag"]} ${fuelType ? styles.selected : ''}`} 
+        onClick={handleFuelModal}
+      >
+        Гориво{fuelType ? `${': '}${fuelType}` : ''}
+      </span>
+
+      <span 
+        className={`${styles["tag"]} ${gears ? styles.selected : ''}`} 
+        onClick={handleGearsModal}
+      >
+        Скорости{gears ? `${': '}${gears}` : ''}
+      </span>
+
       <span className={styles["tag"]} onClick={handleOpenPriceModal}>Цена</span>
-      <span className={`${styles["tag"]} ${styles["selected"]}`}>Година: 2020+</span>
+      <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleOpenYearModal}>Година: 2020+</span>
       <span className={styles["tag"]} onClick={handleWhereChooseModal}>Къде</span>
-      <span className={styles["tag"]} onClick={handleColorModal}>Цвят</span>
-      <span className={styles["tag"]} onClick={handleDoorCountModal}>Брой врати</span>
+
+      <span 
+        className={`${styles["tag"]} ${color ? styles.selected : ''}`} 
+        onClick={handleColorModal}
+      >
+        Цвят{color ? `${': '}${color}` : ''}
+      </span>
+
+      <span 
+        className={`${styles["tag"]} ${doorCount ? styles.selected : ''}`} 
+        onClick={handleDoorCountModal}
+      >
+        Брой врати{doorCount ? `${': '}${doorCount}` : ''}
+      </span>
+
       <span className={styles["tag"]} onClick={handleOpenPowerModal}>Мощност</span>
     </div>
   </div>
@@ -347,6 +398,9 @@ export default function Home() {
 
   {isOpenPower &&
     <PowerRangeModal onCLose={handleClosePower}/>}
+
+  {isOpenYear &&
+    <YearSearchModal onClose={handleCloseYear}/>}
 </main>
 
     );

@@ -21,6 +21,7 @@ import Color from './components/Color/Color'
 import Favourites from './components/Favourites/Favourites'
 import FavouriteProvider from './providers/FavouriteProvider'
 import MyCars from './components/MyCars/MyCars'
+import SearchProvider from './providers/SearchProvider'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -31,6 +32,7 @@ function App() {
     <UserProvider>
     <BrowserRouter>
     <FavouriteProvider>
+      <SearchProvider>
     {/* <ScrollToTop /> */}
       <div className="main">
       <Header showMenu={setIsMenuShown} />
@@ -61,6 +63,7 @@ function App() {
           <Route path='/myCars' element={<MyCars />} />
           </Routes>
       </div>
+      </SearchProvider>
     </FavouriteProvider>
       </BrowserRouter>
       </UserProvider>
