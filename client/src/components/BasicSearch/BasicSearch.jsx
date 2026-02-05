@@ -107,13 +107,17 @@ export default function BasicSearch({
         <div className={styles.head}>
           <i className="fa-solid fa-arrow-left" onClick={() => onClose()}></i>
           {
-            compartment ||
-            fuelType ||
-            gears ||
-            doorCount ||
-            color ?
-            <span className={styles.clear} onClick={handleClearButton}>Clear</span> :
-            ''
+            (
+            (name === 'Купе' && compartment) ||
+            (name === 'Гориво' && fuelType) ||
+            (name === 'Скорости' && gears) ||
+            (name === 'Брой врати' && doorCount) ||
+            (name === 'Цвят' && color)
+          ) && (
+            <span className={styles.clear} onClick={handleClearButton}>
+              Clear
+            </span>
+          )
           }
           <h1>{name}</h1>
         </div>
