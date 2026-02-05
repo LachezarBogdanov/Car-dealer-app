@@ -6,6 +6,7 @@ import styles from './Home.module.css'
 import BasicSearch from '../BasicSearch/BasicSearch';
 import ModelSearch from '../ModelSearch/ModelSearch';
 import PriceRangeModal from '../PriceRangeModal/PriceRangeModal';
+import PowerRangeModal from '../PowerRangeModal/PowerRangeModal';
 
 export default function Home() {
     const { cars } = useGetCars();
@@ -14,6 +15,7 @@ export default function Home() {
     const [modalName, setModalName] = useState('');
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isOpenPrice, setIsOpenPrice] = useState(false);
+    const [isOpenPower, setIsOpenPower] = useState(false);
 
   //   const [filters, setFilters] = useState({
   //     compartment: null,
@@ -26,7 +28,6 @@ export default function Home() {
   //     color: null,
   //     doorCount: null,
   //     power: null,
-  //     condition: null,
   // });
 
   const handleCompartmentModal = () => {
@@ -295,6 +296,10 @@ export default function Home() {
     setIsOpenPrice(true);
   }
 
+  const handleOpenPowerModal = () => {
+    setIsOpenPower(true);
+  }
+
   const handleCloseModal = () => {
     setIsOpen(false);
   }
@@ -305,6 +310,10 @@ export default function Home() {
 
   const handleClosePrice = () => {
     setIsOpenPrice(false);
+  }
+
+  const handleClosePower = () => {
+    setIsOpenPower(false);
   }
     
     return (
@@ -320,7 +329,7 @@ export default function Home() {
       <span className={styles["tag"]} onClick={handleWhereChooseModal}>Къде</span>
       <span className={styles["tag"]} onClick={handleColorModal}>Цвят</span>
       <span className={styles["tag"]} onClick={handleDoorCountModal}>Брой врати</span>
-      <span className={styles["tag"]}>Мощност</span>
+      <span className={styles["tag"]} onClick={handleOpenPowerModal}>Мощност</span>
     </div>
   </div>
   <section className={styles["car-listings"]}>
@@ -335,6 +344,9 @@ export default function Home() {
 
   {isOpenPrice &&
     <PriceRangeModal onClose={handleClosePrice} />}
+
+  {isOpenPower &&
+    <PowerRangeModal onCLose={handleClosePower}/>}
 </main>
 
     );
