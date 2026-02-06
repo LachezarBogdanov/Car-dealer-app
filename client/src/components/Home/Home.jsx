@@ -25,6 +25,10 @@ export default function Home() {
       gears,
       color,
       doorCount,
+      model,
+      city,
+      priceMin,
+      priceMax
      } = useContext(SearchContext);
 
   //   const [filters, setFilters] = useState({
@@ -346,7 +350,12 @@ export default function Home() {
           Купе{compartment ? `${': '}${compartment}` : ''}
       </span>
 
-      <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleModelChooseModal}>Марка: BMW</span>
+      <span 
+        className={`${styles["tag"]} ${model ? styles.selected : ''}`} 
+        onClick={handleModelChooseModal}
+        >
+          Марка{model ? `${': '}${model}` : ''}
+        </span>
 
       <span 
         className={`${styles["tag"]} ${fuelType ? styles.selected : ''}`} 
@@ -362,9 +371,36 @@ export default function Home() {
         Скорости{gears ? `${': '}${gears}` : ''}
       </span>
 
-      <span className={styles["tag"]} onClick={handleOpenPriceModal}>Цена</span>
+      <span 
+        className={`${styles["tag"]} ${
+          priceMin ||
+          priceMax
+          ? styles.selected
+          : ''
+        }`}
+        onClick={handleOpenPriceModal}
+        >
+          Цена{
+            priceMin === 0 && priceMax < 50000
+            ? `: До ${priceMax} EUR`
+            : priceMin > 0 && priceMax === 50000
+            ? `: От ${priceMin} EUR`
+            : priceMin > 0 && priceMax < 50000
+            ? `: От ${priceMin} EUR До ${priceMax} EUR`
+            : priceMin === 0 && priceMax === 50000
+            ? `: Всички`
+            : ''
+          }
+        </span>
+
       <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleOpenYearModal}>Година: 2020+</span>
-      <span className={styles["tag"]} onClick={handleWhereChooseModal}>Къде</span>
+
+      <span 
+        className={`${styles["tag"]} ${city ? styles.selected : ''}`} 
+        onClick={handleWhereChooseModal}
+        >
+          Къде{city ? `${': '}${city}` : ''}
+        </span>
 
       <span 
         className={`${styles["tag"]} ${color ? styles.selected : ''}`} 

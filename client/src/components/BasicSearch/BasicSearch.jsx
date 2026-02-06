@@ -7,9 +7,8 @@ export default function BasicSearch({
   btnValues,
   name,
 }) {
-  const { setData } = useContext(SearchContext);
+  const { setData, compartment, fuelType, gears, doorCount, color } = useContext(SearchContext);
   // const [activeValue, setActiveValue] = useState(null);
-  const { compartment, fuelType, gears, doorCount, color } = useContext(SearchContext);
 
   const handleSearchChoose = (e) => {
     const targetValue = e.target.dataset.value;

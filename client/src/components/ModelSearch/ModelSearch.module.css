@@ -24,6 +24,7 @@
 
 .head {
   display: flex;
+  position: relative;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
@@ -81,6 +82,23 @@
 .tag.active {
   background: #e67e22;
   color: white;
+}
+
+.clear {
+  position: absolute;
+  left: 90%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.clear:hover {
+  background-color: rgba(255, 140, 0, 0.12);
+  color: #e67600;
 }
 
 input.inputSearch {
