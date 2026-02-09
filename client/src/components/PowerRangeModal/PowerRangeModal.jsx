@@ -16,7 +16,7 @@ export default function PowerRangeModal({
         <div className={styles.powerWrapper} onClick={(e) => e.stopPropagation()}>
             <div className={styles.powerHead}>
                 <i className="fa-solid fa-arrow-left" onClick={onCLose}></i>
-                <h1>Цена</h1>
+                <h1>Мощност</h1>
             </div>
             <div className={styles.powerLabels}>
                 <span>{values[0]} к.с.</span>

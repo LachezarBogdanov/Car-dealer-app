@@ -25,7 +25,7 @@ export default function PriceRangeModal({
   }
 
   if (hasMax) {
-    return [priceMax, min]; 
+    return [min, priceMax]; 
   }
 
   return [min, max]; 

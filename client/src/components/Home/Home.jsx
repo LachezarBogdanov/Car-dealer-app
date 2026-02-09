@@ -28,7 +28,9 @@ export default function Home() {
       model,
       city,
       priceMin,
-      priceMax
+      priceMax,
+      yearMin,
+      yearMax,
      } = useContext(SearchContext);
 
   //   const [filters, setFilters] = useState({
@@ -393,7 +395,27 @@ export default function Home() {
           }
         </span>
 
-      <span className={`${styles["tag"]} ${styles["selected"]}`} onClick={handleOpenYearModal}>Година: 2020+</span>
+      <span 
+        className={`${styles["tag"]} ${
+          yearMin ||
+          yearMax ?
+          styles.selected 
+          : ''
+        }`} 
+        onClick={handleOpenYearModal}
+        >
+          Година{
+            yearMin === 1970 && yearMax < 2026
+            ? `: До ${yearMax}`
+            : yearMin > 1970 && yearMax === 2026
+            ? `: От ${yearMin}`
+            : yearMin > 1970 && yearMax < 2026
+            ? `: От ${yearMin} До ${yearMax}`
+            : yearMin === 1970 && yearMax === 2026
+            ? `: Всички`
+            : ''
+          }
+        </span>
 
       <span 
         className={`${styles["tag"]} ${city ? styles.selected : ''}`} 
