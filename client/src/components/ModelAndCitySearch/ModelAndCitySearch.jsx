@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import styles from '../ModelSearch/ModelSearch.module.css'
+import { useContext, useState } from 'react';
+import styles from './ModelAndCitySearch.module.css'
 import { SearchContext } from '../../contexts/SearchContext';
 
 export default function ModelSearch({
@@ -8,6 +8,7 @@ export default function ModelSearch({
     name
 }) {
   const { setData, model, city } = useContext(SearchContext);
+  const [search, setSearch] = useState('');
 
   const handleModelOrCityChoose = (e) => {
     const targetValue = e.target.dataset.value;
@@ -34,7 +35,6 @@ export default function ModelSearch({
     };
     
     onClose();
-
   }
 
   const handleClearButton = () => {
@@ -59,6 +59,10 @@ export default function ModelSearch({
 
     onClose();
   }
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value.toLowerCase());
+  }
     
   return (
     <>
@@ -80,16 +84,27 @@ export default function ModelSearch({
             </div>
 
             <div className={styles.search}>
-                <input className={styles.inputSearch} id='search' type="text" maxLength={20} />
-                <label htmlFor="search">
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                  Търси {name === 'Марка' ? 'марка' : 'град'}
-                </label>
+                <input
+                id="search"
+                type="text"
+                className={styles.inputSearch}
+                placeholder=" "
+                maxLength={20}
+                onChange={handleSearch}
+              />
+              <label htmlFor="search">
+                <i className="fa-solid fa-magnifying-glass"></i>
+                Търси {name === 'Марка' ? 'марка' : 'град'}
+              </label>
+              <i className={`fa-solid fa-magnifying-glass ${styles.searchIcon}`}></i>
             </div>
     
             <div className={styles.buttons}>
               {
-                btnValues.map((value, index) => (
+                btnValues.filter(value => 
+                  value.toLowerCase().includes(search)
+                )
+                .map((value, index) => (
                   <span 
                     className={`${styles.tag} ${
                       (name === 'Марка' && model === value) ||

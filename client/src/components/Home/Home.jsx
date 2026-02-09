@@ -4,7 +4,7 @@ import { useGetCars } from '../../api/carApi';
 import Car from '../Car/Car';
 import styles from './Home.module.css'
 import BasicSearch from '../BasicSearch/BasicSearch';
-import ModelSearch from '../ModelSearch/ModelSearch';
+import ModelSearch from '../ModelAndCitySearch/ModelAndCitySearch';
 import PriceRangeModal from '../PriceRangeModal/PriceRangeModal';
 import PowerRangeModal from '../PowerRangeModal/PowerRangeModal';
 import YearSearchModal from '../YearSearchModal/YearSearchModal';
