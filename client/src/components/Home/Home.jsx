@@ -31,6 +31,8 @@ export default function Home() {
       priceMax,
       yearMin,
       yearMax,
+      powerMin,
+      powerMax
      } = useContext(SearchContext);
 
   //   const [filters, setFilters] = useState({
@@ -438,7 +440,27 @@ export default function Home() {
         Брой врати{doorCount ? `${': '}${doorCount}` : ''}
       </span>
 
-      <span className={styles["tag"]} onClick={handleOpenPowerModal}>Мощност</span>
+      <span 
+        className={`${styles["tag"]} ${
+          powerMin ||
+          powerMax ?
+          styles.selected
+          : ''
+        }`} 
+        onClick={handleOpenPowerModal}
+        >
+          Мощност{
+            powerMin === 0 && powerMax < 454
+            ? `: До ${powerMax}к.с.`
+            : powerMin > 0 && powerMax === 454
+            ? `: От ${powerMin}к.с.`
+            : powerMin > 0 && powerMax < 454
+            ? `: От ${powerMin}к.с. До ${powerMax}к.с.`
+            : powerMin === 0 && powerMax === 454
+            ? `: Всички`
+            : ''
+          }
+        </span>
     </div>
   </div>
   <section className={styles["car-listings"]}>
