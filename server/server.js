@@ -1651,7 +1651,7 @@
     		}
     	},
         cars: {
-            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+            "975737d6-f5e4-4098-833e-11d2714f3e48": {
             "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
             "condition": "В добро състояние",
             "model": "BMW",
@@ -1677,6 +1677,58 @@
         phone: '0886775596',
         "_createdOn": 1756995130885,
         "_id": "975737d6-f5e4-4098-833e-11d2714f3e48"
+    },
+    "a0607b86-af01-4c9a-ad40-d1139a71ddfb": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+        "city": "Карлово",
+        "color": "Черен",
+        "compartment": "Седан",
+        "condition": "В добро състояние",
+        "cubature": "5000",
+        "description": "Допълнително:\n* Възможен бартер\n* Възможност за замяна с лек или товарен автомобил\nЗа повече информация и оглед: 0897507950\n\nВъзможност за бартер",
+        "doorCount": "4/5",
+        "fuelType": "Дизел",
+        "gears": "Автоматични",
+        "mileage": "130544",
+        "model": "Mercedes-Benz",
+        "modifications": "S 560 4M L AMG",
+        "power": "469",
+        "price": "86838",
+        "year": "2019",
+        "images": [
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733348/dzrgcj2nhdoqcnub7pp4.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733354/ikyg5wzjds1lpj9eljvr.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733361/xmtic3z1pzyj0ws0lxak.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733366/xwbk0gaban2ykrxwvp85.jpg"
+        ],
+        "_createdOn": 1770733475721,
+        "_id": "a0607b86-af01-4c9a-ad40-d1139a71ddfb"
+    },
+    "cff2671a-d942-4f88-8814-715596cad80c": {
+        "_ownerId": "64063f3f-b1cd-4b04-ae41-a2657d8e5038",
+        "city": "Русе",
+        "color": "Сив",
+        "compartment": "Седан",
+        "condition": "В добро състояние",
+        "cubature": "2999",
+        "description": "Безупречно състояние !\n-чисто нови джанти\n- сервизна история\n- сменено Динамо с ново във Volkswagen 07. 2025\n- нови накладки отпред и отзад\n- сменено масло на скоростната кутия преди 2к км.\n- 100% реални километри\nЗа повече информация на посочения телефон.\n\nВъзможност за бартер",
+        "doorCount": "4/5",
+        "fuelType": "Дизел",
+        "gears": "Автоматични",
+        "mileage": "152000",
+        "model": "Audi",
+        "modifications": "A7 3 S line",
+        "power": "286",
+        "price": "80187",
+        "year": "2019",
+        "images": [
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733746/owuj2uzwqzotaqefimlv.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733751/tknn8qzinntpznshzcj0.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733757/oj8kwpohwihblk2cfqu1.jpg",
+            "https://res.cloudinary.com/dzqnrdad5/image/upload/v1770733762/u0zdegkpbrwffdcxbvoq.jpg"
+        ],
+        "_createdOn": 1770733862673,
+        "_id": "cff2671a-d942-4f88-8814-715596cad80c"
     }
         }
     };

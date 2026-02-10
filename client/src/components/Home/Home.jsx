@@ -12,6 +12,7 @@ import { SearchContext } from '../../contexts/SearchContext';
 
 export default function Home() {
     const { cars } = useGetCars();
+    
     const [isOpen, setIsOpen] = useState(false);
     const [modalProperties, setModalProperties] = useState([]);
     const [modalName, setModalName] = useState('');

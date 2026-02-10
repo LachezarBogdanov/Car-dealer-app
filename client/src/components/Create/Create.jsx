@@ -35,7 +35,7 @@ export default function Create() {
   const createHandler = async (data) => {
       const carData = {
         ...data,
-        iamges: images.filter(Boolean),
+        images: images.filter(Boolean),
       };
 
       await create(carData);
