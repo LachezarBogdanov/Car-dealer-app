@@ -12,6 +12,7 @@ import { SearchContext } from '../../contexts/SearchContext';
 
 export default function Home() {
     const { cars } = useGetCars();
+    console.log(cars);
     
     const [isOpen, setIsOpen] = useState(false);
     const [modalProperties, setModalProperties] = useState([]);
@@ -36,18 +37,58 @@ export default function Home() {
       powerMax
      } = useContext(SearchContext);
 
-  //   const [filters, setFilters] = useState({
-  //     compartment: null,
-  //     model: null,
-  //     fuelType: null,
-  //     gears: null,
-  //     price: null,
-  //     year: null,
-  //     city: null,
-  //     color: null,
-  //     doorCount: null,
-  //     power: null,
-  // });
+  const filteredCars = cars.filter(car => {
+    if(compartment && car.compartment !== compartment) {
+      return false;
+    }
+
+    if(model && car.model !== model) {
+      return false;
+    }
+
+    if(fuelType && car.fuelType !== fuelType) {
+      return false;
+    }
+
+    if(gears && car.gears !== gears) {
+      return false;
+    }
+
+    if(
+      priceMin !== null && Number(car.price) < priceMin ||
+      priceMax !== null && Number(car.price) > priceMax
+    ) {
+      return false;
+    }
+
+    if(
+      yearMin !== null && Number(car.year) < yearMin ||
+      yearMax !== null && Number(car.year) > yearMax
+    ) {
+      return false;
+    }
+
+    if(city && car.city !== city) {
+      return false;
+    }
+
+    if(color && car.color !== color) {
+      return false;
+    }
+
+    if(doorCount && car.doorCount !== doorCount) {
+      return false;
+    }
+
+    if(
+      powerMin !== null && Number(car.power) < powerMin ||
+      powerMax !== null && Number(car.power) > powerMax
+    ) {
+      return false;
+    }
+
+    return true;
+  });
 
   const handleCompartmentModal = () => {
     setModalProperties([
@@ -465,7 +506,7 @@ export default function Home() {
     </div>
   </div>
   <section className={styles["car-listings"]}>
-    {cars.map(car => (<Car key={car._id} car={car}/>))}
+    {filteredCars.map(car => (<Car key={car._id} car={car}/>))}
   </section>
 
   {isOpen &&

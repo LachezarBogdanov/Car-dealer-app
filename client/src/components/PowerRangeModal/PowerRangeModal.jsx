@@ -33,6 +33,10 @@ export default function PowerRangeModal({
 
     const [values, setValues] = useState(rangeValues);
 
+    const isPowerChanged =
+        values[0] > min  ||
+        values[1] < max ;
+
       useEffect(() => {
             setValues(rangeValues);
         }, [rangeValues]);
@@ -67,9 +71,11 @@ export default function PowerRangeModal({
         <div className={styles.powerWrapper} onClick={(e) => e.stopPropagation()}>
             <div className={styles.powerHead}>
                 <i className="fa-solid fa-arrow-left" onClick={onCLose}></i>
-                <span className={styles.confirm} onClick={handlePowerConfirm}>
-                    Потвърди
-                </span>
+                {isPowerChanged && (
+                    <span className={styles.confirm} onClick={handlePowerConfirm}>
+                        Потвърди
+                    </span>
+                )}
                 {
                     (powerMin && powerMin !== 0 || powerMax && powerMax !== 454 )
                     && (

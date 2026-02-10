@@ -33,6 +33,10 @@ export default function PriceRangeModal({
     
     const [values, setValues] = useState(rangeValues);
 
+     const isPriceChanged =
+        values[0] > min  ||
+        values[1] < max ;
+
 
     useEffect(() => {
         setValues(rangeValues);
@@ -72,9 +76,11 @@ export default function PriceRangeModal({
         <div className={styles.wrapper} onClick={(e) => e.stopPropagation()}>
             <div className={styles.priceHead}>
                 <i className="fa-solid fa-arrow-left" onClick={onClose}></i>
+                {isPriceChanged && (
                 <span className={styles.confirm} onClick={handleCofirmBtn}>
                     Потвърди
                 </span>
+                )}
                 {
                     (priceMin && priceMin !== 0 || priceMax && priceMax !== 50000 )
                     && (
