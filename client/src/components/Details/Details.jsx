@@ -39,8 +39,7 @@ export default function Details() {
     <div className={styles["car-heading"]}>
       <p className={styles["car-title"]}>{car.model} {car.modifications}</p>
       <div className={styles["price"]}>
-        <p className={styles["bgn"]}>{car.price} BGN</p>
-        <p className={styles["eur"]}>{car.price * 0.51} EUR</p>
+        <p className={styles["eur"]}>{car.price} EUR</p>
       </div>
     </div>
     <div className={styles["car-info"]}>

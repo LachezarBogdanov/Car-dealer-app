@@ -385,7 +385,7 @@ export default function Home() {
   }
     
     return (
-        <main>
+        <main className={styles.homeMain}>
   <div className={styles["filters-container"]}>
     <div className={styles["filter-tags"]}>
 
