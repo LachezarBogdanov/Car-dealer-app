@@ -139,3 +139,40 @@ main {
       bottom: 84%;
       color: #555;
     }
+
+    .editDelBtns {
+      position: absolute;
+      margin-top: 1em;
+      right: 30px;
+    }
+
+    .edit {
+      margin-right: 1em;
+      display: inline-block;
+      background-color: rgb(240, 146, 70);
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 1em;
+      border: 2px solid orange;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .edit:hover {
+      transform: translateY(-3px);
+    }
+
+    .del {
+      background-color: rgb(250, 153, 153);
+      display: inline-block;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 1em;
+      border: 2px solid orange;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .del:hover {
+      transform: translateY(-3px);
+    }

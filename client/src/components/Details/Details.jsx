@@ -2,15 +2,15 @@ import { useParams } from 'react-router';
 import styles from './Details.module.css'
 import { useGetCar } from '../../api/carApi';
 import { useEffect, useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
 export default function Details() {
+  const { _id } = useAuth();
   const { carId } = useParams();
   const { car } = useGetCar(carId);
   const date = new Date(car._createdOn);
   const [mainImage, setMainImage] = useState(null);
   const [mainImageIndex, setMainImageIndex] = useState(0);
-  console.log(car);
-  
 
   useEffect(() => {
     if(car?.images) {
@@ -32,6 +32,14 @@ export default function Details() {
   
     return (
         <main>
+          {
+            _id === car._ownerId ?
+            <div className={styles.editDelBtns}>
+              <span className={styles.edit}>Edit</span>
+              <span className={styles.del}>Delete</span>
+            </div>
+            : ''
+          }
         <div className={styles["date"]}>
           {formatedDate}
         </div>
