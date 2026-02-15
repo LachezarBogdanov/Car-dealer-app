@@ -22,6 +22,7 @@ import Favourites from './components/Favourites/Favourites'
 import FavouriteProvider from './providers/FavouriteProvider'
 import MyCars from './components/MyCars/MyCars'
 import SearchProvider from './providers/SearchProvider'
+import NotFound from './components/NotFound/NotFound'
 
 function App() {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -61,7 +62,7 @@ function App() {
           <Route path='/color' element={<Color />} />
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/myCars' element={<MyCars />} />
-          {/* <Route path='*' element={} /> */}
+          <Route path='*' element={<NotFound />} />
           </Routes>
       </div>
       </SearchProvider>
