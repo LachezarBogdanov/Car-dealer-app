@@ -42,3 +42,13 @@
   padding: 20px;
 }
 
+.notAvailable {
+  background-color: rgb(240, 146, 70);
+  padding: 1em;
+  margin-top: 2em;
+  color: #fff;
+  border-radius: 1em;
+  border: 2px solid orange;
+  box-shadow: 0 0 0.1em 0 rgb(0, 0, 0,5);
+}
+

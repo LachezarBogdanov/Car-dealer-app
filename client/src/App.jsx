@@ -61,6 +61,7 @@ function App() {
           <Route path='/color' element={<Color />} />
           <Route path='/favourites' element={<Favourites />} />
           <Route path='/myCars' element={<MyCars />} />
+          {/* <Route path='*' element={} /> */}
           </Routes>
       </div>
       </SearchProvider>

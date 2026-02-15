@@ -506,7 +506,11 @@ export default function Home() {
     </div>
   </div>
   <section className={styles["car-listings"]}>
-    {filteredCars.map(car => (<Car key={car._id} car={car}/>))}
+    {
+      filteredCars.length > 0 ?
+      filteredCars.map(car => (<Car key={car._id} car={car}/>))
+      : <h1 className={styles.notAvailable}>No available cars with these filters!</h1>
+    }
   </section>
 
   {isOpen &&
