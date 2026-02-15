@@ -168,7 +168,7 @@ main {
       color: white;
       padding: 0.5em 1em;
       border-radius: 1em;
-      border: 2px solid orange;
+      border: 2px solid rgb(250, 129, 129);
       transition: all 0.3s ease;
       cursor: pointer;
     }
